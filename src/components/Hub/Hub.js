@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, Image } from 'react-native';
 import Tabs from 'react-native-tabs';
-import { MapPage, ArtPage, ArtistsPage, CommunityPage } from './Hub.components';
+import { MapPage, ArtPage, ArtistsPage, CommunityPage, SearchBar, Tab } from './Hub.components';
+
+
 
 
 const RenderPage = ({elem}) => {
@@ -17,13 +19,14 @@ const RenderPage = ({elem}) => {
 
 
 
+
 class Hub extends Component {
   constructor(props){
     super(props);
-    this.state = {page:'map'};
+    this.state = {page:'art'};
+
 
   }
-
 
 
 
@@ -36,20 +39,25 @@ class Hub extends Component {
   render() {
     const {page} = this.state;
     return (
-      <View style={styles.container}>
-        <Tabs selected={this.state.page} style={{backgroundColor:'white'}}
-              selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name})}>
+      <View style={container}>
+        <SearchBar /> 
+        <RenderPage elem={this.state.page} />
+
+
+
+        <Tabs selected={this.state.page} 
+              style={fontStyle}
+              selectedStyle={{color:'#66949C'}} 
+              onSelect={el=>this.setState({page:el.props.name})}>
             
-            <Text name="art">Art</Text>
-            
-            <Text name="map" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Map</Text>
-            
-            <Text name="community">Community</Text>
-            
-            <Text name="artists" selectedStyle={{color:'green'}}>Artists</Text>
+          <Tab name="art" title="Art"/>
+          <Tab name="map" title="Map"/>
+          <Tab name="community" title="Community"/>
+          <Tab name="artists" title="Artists"/>
+           
         </Tabs>
 
-        <RenderPage elem={this.state.page} />
+        
 
           
 
@@ -63,19 +71,37 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    alignItems: 'center'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  keyboardContainer: {
+    width: "70%",
+
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  input: {
+    height: 40,
+    color: "white",
+    paddingHorizontal: 10,
+    width: "100%",
+    borderWidth: 0.5,
+    borderColor: '#d6d7da'
   },
+  formContainer: { 
+    marginTop: 30, 
+    flexDirection:'row',
+    justifyContent: 'center',
+       
+  },
+  selectedIconStyle: {
+    borderTopWidth:2,
+    borderTopColor:'#66949C'
+  },
+  fontStyle: {
+    backgroundColor: "grey",
+    borderWidth: 0.5,
+    borderColor: 'black',
+  }
 });
+
+const { fontStyle, container, selectedIconStyle } = styles;
 
 export default Hub;
