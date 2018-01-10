@@ -23,7 +23,7 @@ const RenderPage = ({elem}) => {
 class Hub extends Component {
   constructor(props){
     super(props);
-    this.state = {page:'art'};
+    this.state = {page:'map'};
 
 
   }
