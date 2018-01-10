@@ -1,4 +1,4 @@
-import Header from './Header.js';
-import CryptoContainer from './CryptoContainer';
+import Hub from './Hub.js';
 
-export { Header, CryptoContainer };
+
+export { Hub };
