@@ -1,4 +1,4 @@
-import Hub from './Hub.js';
+import Hub from './Hub/Hub.js';
 
 
 export { Hub };

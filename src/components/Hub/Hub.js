@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import Tabs from 'react-native-tabs';
 import { MapPage, ArtPage, ArtistsPage, CommunityPage } from './Hub.components';
 
+
 const RenderPage = ({elem}) => {
   if(elem === 'map'){ 
     return ( <MapPage elem={elem} /> ) }
