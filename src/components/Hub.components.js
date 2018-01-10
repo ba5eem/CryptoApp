@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export const MapPage = ({elem}) => {
   return (
       <View> 
-        <Text> current Map page: {elem}</Text> 
+        <Text> current Mapss page: {elem}</Text> 
       </View>
     )
 }
