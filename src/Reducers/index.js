@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import CryptoReducer from './CryptoReducer';
+import Artwork from './Artwork';
 
 export default combineReducers({
-  crypto: CryptoReducer
+  artwork: Artwork
 })
