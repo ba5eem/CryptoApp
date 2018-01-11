@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, Image } from 'react-native';
 import Tabs from 'react-native-tabs';
-import { MapPage, ArtPage, ArtistsPage, CommunityPage, SearchBar, Tab } from './Hub.components';
+import { Header,MapPage, ArtPage, ArtistsPage, CommunityPage, SearchBar, Tab } from './Hub.components';
 
 
 
@@ -16,6 +16,7 @@ const RenderPage = ({elem}) => {
   if(elem === 'artists'){ 
     return ( <ArtistsPage elem={elem} /> ) }
 }
+
 
 
 
@@ -40,6 +41,7 @@ class Hub extends Component {
     const {page} = this.state;
     return (
       <View style={container}>
+        <Header />
         <SearchBar /> 
         <RenderPage elem={this.state.page} />
 
@@ -80,13 +82,11 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     color: "white",
-    paddingHorizontal: 10,
     width: "100%",
     borderWidth: 0.5,
     borderColor: '#d6d7da'
   },
-  formContainer: { 
-    marginTop: 30, 
+  formContainer: {  
     flexDirection:'row',
     justifyContent: 'center',
        
@@ -99,9 +99,10 @@ const styles = StyleSheet.create({
     backgroundColor: "grey",
     borderWidth: 0.5,
     borderColor: 'black',
-  }
+  },
+ 
 });
 
-const { fontStyle, container, selectedIconStyle } = styles;
+const { fontStyle, headerContainer, container, selectedIconStyle } = styles;
 
 export default Hub;

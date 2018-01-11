@@ -58,6 +58,17 @@ export const SearchBar = () => {
         )
 }
 
+export const Header = () => {
+  return(
+        <View style={headerContainer}>
+          <Image source={link} style={size}/>
+          <Text>POWWOW!!</Text>
+          <Image source={link} style={size}/>
+        </View>
+
+    )
+}
+
 
 const styles = StyleSheet.create({
   container: {
@@ -81,7 +92,7 @@ const styles = StyleSheet.create({
 
   },
   formContainer: { 
-    marginTop: 30, 
+    marginTop: 5, 
     flexDirection:'row',
     justifyContent: 'center',
 
@@ -91,7 +102,14 @@ const styles = StyleSheet.create({
   selectedIconStyle: {
     borderTopWidth:2,
     borderTopColor:'#66949C'
+  },
+   headerContainer: {
+    marginTop: 20, 
+    flexDirection:'row',
+    justifyContent: 'space-around',
+    backgroundColor: "grey",
+    width: "100%"
   }
 });
 
-const { keyboardContainer, input, selectedIconStyle, formContainer } = styles;
+const { keyboardContainer, headerContainer, input, selectedIconStyle, formContainer } = styles;
