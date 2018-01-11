@@ -6,29 +6,40 @@ import {
   Text,
   ScrollView
 } from 'react-native';
- 
+import { MapView } from 'expo';
+
 var { height } = Dimensions.get('window');
 var box_count = 3;
 var box_height = height / box_count;
 
-const data = [
-  {title: 'BOX1'}, {title: 'BOX2'}, {title: 'BOX3'}, {title: 'BOX4'}, {title: 'BOX5'}, {title: 'BOX6'}
-]
+
+export const kakaako = {
+        lat: 21.296594,
+        lng: -157.855613,
+      };
+export const cord = {
+        longitude: -157.855613,
+        latitude: 21.296594   
+      };
  
 class MapPageComponent extends Component {
-
-
-
-
-
 
 
   render() {
     return (
         <View style={container}>
-          <View style={[styles.box, styles.box1]}>
-            <Text>MAP PAGE</Text>
-          </View>
+          <MapView
+            style={{ flex: 1 }}
+            initialRegion={{
+              latitude: kakaako.lat,
+              longitude: kakaako.lng,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}>
+            <MapView.Marker
+              coordinate={cord}/>
+          </MapView>
+
         </View>
     );
   }
