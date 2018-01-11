@@ -4,16 +4,16 @@ import {
   View,
   Dimensions,
   Text,
-  ScrollView
+  ScrollView,
+  Image
 } from 'react-native';
  
 var { height } = Dimensions.get('window');
-var box_count = 3;
+var box_count = 4;
 var box_height = height / box_count;
+const link = {uri: 'http://powwowhawaii.com/wp-content/uploads/2016/03/pwh2016-Luke-McCabe.jpg'}
+const size = {width: 35, height: 35, marginRight: 10, marginLeft:10};
 
-const data = [
-  {title: 'BOX1'}, {title: 'BOX2'}, {title: 'BOX3'}, {title: 'BOX4'}, {title: 'BOX5'}, {title: 'BOX6'}
-]
  
 class CommunityPageComponent extends Component {
 
@@ -33,7 +33,18 @@ class CommunityPageComponent extends Component {
     return (
 
         <ScrollView style={styles.container}>
-            {data.map(this.renderArtView)}
+            <View style={[styles.box, styles.box1]}>
+              <Text>Map Animation goes here</Text>
+            </View>
+            <View style={[styles.chatView, styles.box2]}>
+              <Image source={link} style={size}/>
+              <View style={styles.messages}>
+                <Text>chat goes here - time</Text>
+                <Image source={link} style={size}/>
+              </View>
+              <Image source={link} style={size}/>
+
+            </View>
         </ScrollView>
     );
   }
@@ -43,7 +54,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    marginTop: 5,
     width: "100%",
   },
   box: {
@@ -58,13 +68,21 @@ const styles = StyleSheet.create({
   },
   //content
   box2: {
-      flex: 10,
+      flex: 1,
       backgroundColor: '#8BC34A'
   },
   //footer
   box3: {
       flex: .5,
       backgroundColor: '#e3aa1a'
+  },
+  chatView: {
+    flexDirection:'row',
+    justifyContent: "space-around"
+
+  },
+  messages: {
+
   }
 });
 

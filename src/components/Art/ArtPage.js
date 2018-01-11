@@ -66,7 +66,6 @@ class ArtPageComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 5,
     width: "100%",
     zIndex: 0
 

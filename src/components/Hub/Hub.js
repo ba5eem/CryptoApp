@@ -24,7 +24,7 @@ const RenderPage = ({elem}) => {
 class Hub extends Component {
   constructor(props){
     super(props);
-    this.state = {page:'art'};
+    this.state = {page:'community'};
 
 
   }
@@ -39,10 +39,11 @@ class Hub extends Component {
 
   render() {
     const {page} = this.state;
+    const search = page === 'map';
     return (
       <View style={container}>
         <Header />
-        <SearchBar /> 
+        {search ? <SearchBar /> : null }
         <RenderPage elem={this.state.page} />
 
 
