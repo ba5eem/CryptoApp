@@ -4,12 +4,10 @@ import { List, ListItem, Avatar, Divider, Icon } from 'react-native-elements'
 import Tabs from 'react-native-tabs';
 import { StackNavigator } from 'react-navigation';
 import { AppHeader } from '../Header/AppHeader';
-
-import { data } from '../../Reducers/data.js';
 const person = {uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"};
 const heart = {uri: "http://bit.ly/2E7uI2U"};
 const star = {uri: "http://bit.ly/2nFjNrl"};
-
+const data = [{url: 'sss', title:'sss'}]
 
 class ArtView extends Component {
   constructor(props){

@@ -1,18 +1,9 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import {loadArtists} from '../../Actions/artists-actions';
 import { View, Text, Image, StyleSheet,ScrollView } from 'react-native'
 import { Card, ListItem, Button, SearchBar } from 'react-native-elements'
 import { AppHeader } from '../Header/AppHeader';
-
-const person = {uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"};
-
-
-const users = [
- {
-    name: 'brynn',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
- },
-]
-
 
 
 class ArtistsView extends Component {
@@ -23,7 +14,9 @@ class ArtistsView extends Component {
 
   }
 
-
+  componentWillMount() {
+    this.props.loadArtists();
+  }
 
 
 
@@ -32,7 +25,7 @@ class ArtistsView extends Component {
 
 
   render() {
-
+    const {artists} = this.props;
     return (
       <View>
         <AppHeader/>
@@ -49,13 +42,14 @@ class ArtistsView extends Component {
 
          <Card containerStyle={{padding: 0}} >
           {
-            users.map((u, i) => {
+            artists.map((u, i) => {
               return (
                 <ListItem
+                  onPress={()=>console.log('see the artist')}
                   key={i}
                   roundAvatar
                   title={u.name}
-                  avatar={{uri:u.avatar}}
+                  avatar={{uri:u.photo}}
                 />
               );
             })
@@ -104,4 +98,16 @@ const styles = StyleSheet.create({
 
 const { fontStyle, headerContainer, container, selectedIconStyle } = styles;
 
-export default ArtistsView;
+const mapStateToProps = (state) => {
+  return {
+    artists: state.artists
+  };
+}
+
+const ConnectedArtistsView = connect(
+  mapStateToProps,
+  {loadArtists}
+)(ArtistsView)
+
+
+export default ConnectedArtistsView;
