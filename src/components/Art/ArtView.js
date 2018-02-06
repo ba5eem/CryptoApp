@@ -40,6 +40,7 @@ class ArtView extends Component {
 
         <Image
           style={{width: '100%', height: 200}}
+          activeOpacity={0.7}
           source={{uri: elem.url}}/>
         <Divider style={{ height: 2,backgroundColor: 'black' }} />
         <View style={{width: '100%', height: 40, flexDirection: 'row'}}>

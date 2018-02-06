@@ -7,8 +7,6 @@ import {
   ScrollView
 } from 'react-native';
 import { AppHeader } from '../Header/AppHeader';
-import Tabs from 'react-native-tabs';
-import { StackNavigator } from 'react-navigation';
 import { MapView } from 'expo';
 
 const { height } = Dimensions.get('window');
@@ -24,12 +22,14 @@ export const cord = {
         longitude: -157.855613,
         latitude: 21.296594   
       };
+
 export const initRegion = {
         latitude: kakaako.lat,
         longitude: kakaako.lng,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       };
+const artMarkers = [{title:'art', description: 'awesome', latlng: kakaako}]
 
 
  
@@ -42,9 +42,13 @@ class MapScreen extends Component {
         <AppHeader/>
           <MapView
             style={{ flex: 1 }}
+            showsUserLocation={true}
+            zoomEnabled={true}
+            zoomControlEnabled={true}
             initialRegion={initRegion}>
             <MapView.Marker
               coordinate={cord}/>
+
           </MapView>
 
         </View>
