@@ -5,13 +5,13 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 import CommunityView from '../Community/CommunityView';
 import { Ionicons } from 'react-native-vector-icons';
 import ArtView from '../Art/ArtView';
-import MapView from '../Map/MapView';
+import MapScreen from '../Map/MapScreen';
 import ArtistsView from '../Artists/ArtistsView';
 
 const Screens = {
+    Map: { screen: MapScreen },
     Art: { screen: ArtView },
     Community: { screen: CommunityView },
-    Map: { screen: MapView },
     Artists: { screen: ArtistsView },
   };
 

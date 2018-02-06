@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "expo": "^23.0.4",
+    "expo": "^23.0.6",
     "react": "16.0.0",
     "react-instantsearch": "^4.4.1",
     "react-native": "0.50.3",

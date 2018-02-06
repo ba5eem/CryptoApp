@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
-import { List, ListItem, Header, Avatar, Divider, Icon } from 'react-native-elements'
+import { List, ListItem, Avatar, Divider, Icon } from 'react-native-elements'
 import Tabs from 'react-native-tabs';
 import { StackNavigator } from 'react-navigation';
+import { AppHeader } from '../Header/AppHeader';
 
 import { data } from '../../Reducers/data.js';
 const person = {uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"};
-const headLeft = { icon: 'menu', color: '#fff' };
-const headCenter = { text: 'PowWow!', style: { color: '#fff' } };
-const headRight = { icon: 'home', color: '#fff' };
 const heart = {uri: "http://bit.ly/2E7uI2U"};
 const star = {uri: "http://bit.ly/2nFjNrl"};
 
@@ -32,11 +30,7 @@ class ArtView extends Component {
   render() {
     return (
       <View>
-       <Header
-        leftComponent={headLeft}
-        centerComponent={headCenter}
-        rightComponent={headRight}
-        />
+       <AppHeader/>
       <ScrollView style={{marginBottom: 50}}>
 <List containerStyle={{marginBottom: 20}}>
   {
