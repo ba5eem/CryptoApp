@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
-import { List, ListItem, Avatar, Divider, Icon } from 'react-native-elements'
+import { List, ListItem, Avatar, Divider, Icon } from 'react-native-elements';
+import { connect } from 'react-redux';
+import {loadArtists} from '../../Actions/artists-actions';
 import Tabs from 'react-native-tabs';
 import { StackNavigator } from 'react-navigation';
 import { AppHeader } from '../Header/AppHeader';
@@ -26,32 +28,33 @@ class ArtView extends Component {
 
 
   render() {
+    const {artists} = this.props; 
     return (
       <View>
        <AppHeader/>
       <ScrollView style={{marginBottom: 50}}>
 <List containerStyle={{marginBottom: 20}}>
   {
-    data.map((elem, i) => (
+    artists.map((elem, i) => (
 
       <View key={i}>
 
         <Image
           style={{width: '100%', height: 200}}
           activeOpacity={0.7}
-          source={{uri: elem.url}}/>
+          source={{uri: elem.ftarturl}}/>
         <Divider style={{ height: 2,backgroundColor: 'black' }} />
         <View style={{width: '100%', height: 40, flexDirection: 'row'}}>
           <View style={{width: '15%', height: 40, margin: 3}}>
             <Avatar
               small
               rounded
-              source={person}
+              source={{uri: elem.photo}}
               onPress={() => console.log("Load Artist Page!")}
               activeOpacity={0.7}/>
           </View>
           <View style={{width: '55%', height: 40}}>
-            <Text style={{marginTop: 10, marginLeft: 5}}>{elem.title}</Text>
+            <Text style={{marginTop: 10, marginLeft: 5}}>{elem.name}</Text>
           </View>
           <View style={{width: '15%', height: 40,margin: 3}}>
             <Avatar
@@ -124,4 +127,16 @@ const styles = StyleSheet.create({
 
 const { fontStyle, headerContainer, container, selectedIconStyle } = styles;
 
-export default ArtView;
+const mapStateToProps = (state) => {
+  return {
+    artists: state.artists
+  };
+}
+
+const ConnectedArtView = connect(
+  mapStateToProps,
+  {loadArtists}
+)(ArtView)
+
+
+export default ConnectedArtView;

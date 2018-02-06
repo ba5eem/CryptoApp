@@ -8,10 +8,14 @@ import ArtView from '../Art/ArtView';
 import MapScreen from '../Map/MapScreen';
 import ArtistsView from '../Artists/ArtistsView';
 
+
+
 const Screens = {
-    Artists: { screen: ArtistsView },
-    Map: { screen: MapScreen },
+    
+    
     Art: { screen: ArtView },
+    Map: { screen: MapScreen },
+    Artists: {screen: ArtistsView},
     Community: { screen: CommunityView }
     ,
   };
@@ -61,8 +65,6 @@ class Hub extends Component {
   constructor(props){
     super(props);
     this.state = {page:'community'};
-
-
   }
 
 
@@ -74,7 +76,6 @@ class Hub extends Component {
 
 
   render() {
-
     return (
       
       <Navigation/>

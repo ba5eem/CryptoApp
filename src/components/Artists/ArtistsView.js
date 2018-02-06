@@ -6,6 +6,7 @@ import { Card, ListItem, Button, SearchBar } from 'react-native-elements'
 import { AppHeader } from '../Header/AppHeader';
 
 
+
 class ArtistsView extends Component {
   constructor(props){
     super(props);
@@ -49,6 +50,7 @@ class ArtistsView extends Component {
                   key={i}
                   roundAvatar
                   title={u.name}
+                  titleStyle={{fontFamily:'Permanent Marker'}}
                   avatar={{uri:u.photo}}
                 />
               );
