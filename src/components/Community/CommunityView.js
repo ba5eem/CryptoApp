@@ -29,47 +29,12 @@ class CommunityView extends Component {
   render() {
 
     return (
-      <View style={container}>
-<Text>CommunityView Page</Text>
+      <View>
+        <Text>CommunityView Page</Text>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  keyboardContainer: {
-    width: "70%",
-
-  },
-  input: {
-    height: 40,
-    color: "white",
-    width: "100%",
-    borderWidth: 0.5,
-    borderColor: '#d6d7da'
-  },
-  formContainer: {  
-    flexDirection:'row',
-    justifyContent: 'center',
-       
-  },
-  selectedIconStyle: {
-    borderTopWidth:2,
-    borderTopColor:'#66949C'
-  },
-  fontStyle: {
-    backgroundColor: "grey",
-    borderWidth: 0.5,
-    borderColor: 'black',
-  },
- 
-});
-
-const { fontStyle, headerContainer, container, selectedIconStyle } = styles;
 
 export default CommunityView;
