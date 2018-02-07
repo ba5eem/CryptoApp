@@ -1,17 +1,22 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {loadArtists} from '../../Actions/artists-actions';
-import { View, Text, Image, StyleSheet,ScrollView } from 'react-native'
-import { Card, ListItem, Button, SearchBar } from 'react-native-elements'
+import { View, Text, Image, StyleSheet,ScrollView, TextInput } from 'react-native';
+import { Ionicons } from 'react-native-vector-icons';
+import { Card, ListItem, Button } from 'react-native-elements';
+import {Search} from './Search';
 import { AppHeader } from '../Header/AppHeader';
-
+import { data } from '../Art/data.js';
 
 
 class ArtistsView extends Component {
   constructor(props){
     super(props);
-    this.state = {page:'community'};
-
+    this.state = {
+      view: false,
+      obj: {},
+      query: ''
+    };
 
   }
 
@@ -20,33 +25,25 @@ class ArtistsView extends Component {
   }
 
 
+  checkthis(){
+    console.log('ssss')
+  }
 
 
 
 
-
-  render() {
-    const {artists} = this.props;
-    return (
+  renderList(){
+    return(
       <View>
         <AppHeader/>
-        <SearchBar
-          lightTheme
-          onChangeText={()=>console.log('change text')}
-          onClearText={()=>console.log('clear text')}
-          icon={{ type: 'font-awesome', name: 'search' }}
-          showLoading
-          platform="ios"
-          cancelButtonTitle="Cancel"
-          placeholder='Search' />
         <ScrollView  >
 
          <Card containerStyle={{padding: 0}} >
           {
-            artists.map((u, i) => {
+            data.map((u, i) => {
               return (
                 <ListItem
-                  onPress={()=>console.log('see the artist')}
+                  onPress={()=>this.setState({view: true, obj: u})}
                   key={i}
                   roundAvatar
                   title={u.name}
@@ -59,8 +56,61 @@ class ArtistsView extends Component {
         </Card>
         </ScrollView>
       </View>
-      
-    );
+      )
+  }
+
+  renderSingleArtist(elem){
+    return(
+        <ScrollView>
+          <ListItem
+          title={elem.name}
+          titleStyle={{textAlign: 'center'}}
+          fontFamily={'MarkerFelt-Wide'}
+          onPress={() => this.setState({view: false})}
+          hideChevron={true}
+          leftIcon={<Ionicons
+                      name={'ios-arrow-back'}
+                      size={50}/>
+                        }/>
+          <Image
+            style={{width: '100%', height: 200}}
+            activeOpacity={0.7}
+            source={{uri: elem.photo}}/>  
+          <Text style={{fontFamily: 'MarkerFelt-Wide', fontSize: 20,textAlign: 'center', padding: 5}}>{elem.bio}</Text>   
+          <Text style={{fontFamily: 'MarkerFelt-Wide', fontSize: 20,textAlign: 'center', color: 'blue', padding: 5, backgroundColor: 'powderblue'}}
+            onPress={() => Linking.openURL(elem.website)}>
+              Visit Artists Page
+          </Text>     
+          <Image
+            style={{width: '100%', height: 200}}
+            activeOpacity={0.7}
+            source={{uri: elem.ftarturl}}/>              
+        </ScrollView>
+      )
+  }
+
+
+
+
+
+  render() {
+    const {artists} = this.props;
+    const {view,obj} = this.state;
+    switch(view){
+      case false:
+        return (
+              <View>
+                {this.renderList()}
+              </View>
+            )
+      case true:
+        return (
+              <View>
+                <AppHeader/>
+                {this.renderSingleArtist(obj)}
+              </View>
+              )
+    }
   }
 }
 

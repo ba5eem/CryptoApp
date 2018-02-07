@@ -11,10 +11,10 @@ import ArtistsView from '../Artists/ArtistsView';
 
 
 const Screens = {
-    
+    Artists: {screen: ArtistsView},
     Map: { screen: MapScreen },
     Art: { screen: ArtView },
-    Artists: {screen: ArtistsView},
+    
     Community: { screen: CommunityView }
     ,
   };
