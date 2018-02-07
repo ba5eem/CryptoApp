@@ -16,7 +16,7 @@ class ArtistsView extends Component {
   }
 
   componentWillMount() {
-    this.props.loadArtists();
+    //this.props.loadArtists();
   }
 
 
@@ -50,7 +50,7 @@ class ArtistsView extends Component {
                   key={i}
                   roundAvatar
                   title={u.name}
-                  titleStyle={{fontFamily:'Permanent Marker'}}
+                  titleStyle={{fontFamily: 'MarkerFelt-Wide'}}
                   avatar={{uri:u.photo}}
                 />
               );

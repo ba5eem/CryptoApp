@@ -10,7 +10,7 @@ import { Header } from 'react-native-elements';
 
 
 const headLeft = { icon: 'menu', color: '#fff' };
-const headCenter = { text: 'PowWow!', style: {color: '#fff' } };
+const headCenter = { text: 'PowWow!', style: {fontFamily: 'MarkerFelt-Wide',color: 'black', fontSize: 30 } };
 const headRight = { icon: 'home', color: '#fff' };
 
 
@@ -23,9 +23,7 @@ export const AppHeader = () => {
   return(
 
       <Header
-        leftComponent={headLeft}
         centerComponent={headCenter}
-        rightComponent={headRight}
         />
 
         )

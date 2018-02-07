@@ -1,20 +1,25 @@
 import React, {Component} from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
-import { List, ListItem, Avatar, Divider, Icon } from 'react-native-elements';
+import { List, ListItem, Avatar, Divider, Icon,Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import {loadArtists} from '../../Actions/artists-actions';
+import { Ionicons } from 'react-native-vector-icons';
 import Tabs from 'react-native-tabs';
 import { StackNavigator } from 'react-navigation';
 import { AppHeader } from '../Header/AppHeader';
-const person = {uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"};
+import { data } from './data.js';
+
 const heart = {uri: "http://bit.ly/2E7uI2U"};
 const star = {uri: "http://bit.ly/2nFjNrl"};
-const data = [{url: 'sss', title:'sss'}]
+
 
 class ArtView extends Component {
   constructor(props){
     super(props);
-    this.state = {page:'community'};
+    this.state = {
+      hate: 'ios-heart-outline',
+      like: 'ios-heart'
+    };
 
 
   }
@@ -29,13 +34,14 @@ class ArtView extends Component {
 
   render() {
     const {artists} = this.props; 
+    const {like,hate} = this.state;
     return (
       <View>
        <AppHeader/>
       <ScrollView style={{marginBottom: 50}}>
 <List containerStyle={{marginBottom: 20}}>
   {
-    artists.map((elem, i) => (
+    data.map((elem, i) => (
 
       <View key={i}>
 
@@ -43,42 +49,24 @@ class ArtView extends Component {
           style={{width: '100%', height: 200}}
           activeOpacity={0.7}
           source={{uri: elem.ftarturl}}/>
-        <Divider style={{ height: 2,backgroundColor: 'black' }} />
-        <View style={{width: '100%', height: 40, flexDirection: 'row'}}>
-          <View style={{width: '15%', height: 40, margin: 3}}>
-            <Avatar
-              small
+          <List containerStyle={{marginTop:0}}>
+          <ListItem
+            key={i}
+            title={elem.name}
+            fontFamily={'MarkerFelt-Wide'}
+            rightIcon={
+              <Ionicons
+                name={hate}
+                size={35}
+                onPress={() => console.log('i like it!')}/>
+            }
+            avatar={<Avatar
               rounded
-              source={{uri: elem.photo}}
-              onPress={() => console.log("Load Artist Page!")}
-              activeOpacity={0.7}/>
-          </View>
-          <View style={{width: '55%', height: 40}}>
-            <Text style={{marginTop: 10, marginLeft: 5}}>{elem.name}</Text>
-          </View>
-          <View style={{width: '15%', height: 40,margin: 3}}>
-            <Avatar
-              small
-              rounded
-              source={heart}
-              onPress={() => console.log("Heart!")}
-              activeOpacity={0.7}/>
-            
-          </View>
-          <View style={{width: '15%', height: 40,margin: 3}}>
-          <Avatar
-              small
-              rounded
-              source={star}
-              onPress={() => console.log("Star!")}
-              activeOpacity={0.7}/>
-            
-          </View>
-          
+              source={elem.photo && {uri: elem.photo}}
+              title={elem.name}/>}
+            />
 
-
-        </View>
-        <Divider style={{ height: 1,backgroundColor: 'black' }} />
+          </List>
       </View>
 
     ))
