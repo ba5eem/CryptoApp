@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, Image } from 'react-native';
 import Tabs from 'react-native-tabs';
 import { StackNavigator } from 'react-navigation';
-
+import { AppHeader } from '../Header/AppHeader';
 
 
 
@@ -30,6 +30,7 @@ class CommunityView extends Component {
 
     return (
       <View>
+        <AppHeader/>
         <Text>CommunityView Page</Text>
       </View>
     );
