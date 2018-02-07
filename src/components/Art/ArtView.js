@@ -17,52 +17,42 @@ class ArtView extends Component {
     this.state = {
       hate: 'ios-heart-outline',
       like: 'ios-heart',
-      status: false
+      status: false,
+      view: false,
+      obj: {},
     };
   }
 
-
-
-
-
-
-
-
-
-  render() {
-    const {artists} = this.props; 
-    const {like,hate,status} = this.state;
+  renderFeatured(status, like, hate){
     return (
       <View>
        <AppHeader/>
-      <ScrollView style={{marginBottom: 50}}>
-<List containerStyle={{marginBottom: 20}}>
-  {
-    data.map((elem, i) => (
-
-      <View key={i}>
-
-        <Image
-          style={{width: '100%', height: 200}}
-          activeOpacity={0.7}
-          source={{uri: elem.ftarturl}}/>
-          <List containerStyle={{marginTop:0}}>
-          <ListItem
-            key={i}
-            title={elem.name}
-            fontFamily={'MarkerFelt-Wide'}
-            rightIcon={
-              <Ionicons
-                name={status ? like : hate}
-                size={35}
-                onPress={() => console.log('i like it, or hate it!')}/>
-            }
-            avatar={<Avatar
-              rounded
-              source={elem.photo && {uri: elem.photo}}
-              onPress={() => console.log('show me artist page!')}
-              title={elem.name}/>}
-            />
+       <ScrollView style={{marginBottom: 50}}>
+          <List containerStyle={{marginBottom: 20}}>
+            {
+              data.map((elem, i) => (
+                <View key={i}>
+                  <Image
+                    style={{width: '100%', height: 200}}
+                    activeOpacity={0.7}
+                    source={{uri: elem.ftarturl}}/>
+                    <List containerStyle={{marginTop:0}}>
+                    <ListItem
+                      key={i}
+                      title={elem.name}
+                      fontFamily={'MarkerFelt-Wide'}
+                      onPress={()=>this.setState({view: true, obj: elem})}
+                      rightIcon={
+                        <Ionicons
+                          name={status ? like : hate}
+                          size={35}
+                          onPress={() => console.log('i like it, or hate it!')}/>
+                      }
+                      avatar={<Avatar
+                        rounded
+                        source={elem.photo && {uri: elem.photo}}
+                        title={elem.name}/>}
+                      />
 
           </List>
       </View>
@@ -73,7 +63,61 @@ class ArtView extends Component {
 </ScrollView>
 
       </View>
-    );
+      )
+  }
+
+renderSingleArtist(elem){
+    return(
+        <ScrollView>
+          <ListItem
+          title={elem.name}
+          titleStyle={{textAlign: 'center'}}
+          fontFamily={'MarkerFelt-Wide'}
+          onPress={() => this.setState({view: false})}
+          hideChevron={true}
+          leftIcon={<Ionicons
+                      name={'ios-arrow-back'}
+                      size={50}/>
+                        }/>
+          <Image
+            style={{width: '100%', height: 200}}
+            activeOpacity={0.7}
+            source={{uri: elem.photo}}/>  
+          <Text style={{fontFamily: 'MarkerFelt-Wide', fontSize: 20,textAlign: 'center', padding: 5}}>{elem.bio}</Text>   
+          <Text style={{fontFamily: 'MarkerFelt-Wide', fontSize: 20,textAlign: 'center', color: 'blue', padding: 5, backgroundColor: 'powderblue'}}
+            onPress={() => Linking.openURL(elem.website)}>
+              Visit Artists Page
+          </Text>     
+          <Image
+            style={{width: '100%', height: 200}}
+            activeOpacity={0.7}
+            source={{uri: elem.ftarturl}}/>              
+        </ScrollView>
+      )
+  }
+
+
+
+
+
+  render() {
+    const {artists} = this.props; 
+    const {like,hate,status,view, obj} = this.state;
+    switch(view){
+      case false:
+        return (
+              <View>
+                {this.renderFeatured(status,like,hate)}
+              </View>
+            )
+      case true:
+        return (
+              <View>
+                <AppHeader/>
+                {this.renderSingleArtist(obj)}
+              </View>
+              )
+    }
   }
 }
 

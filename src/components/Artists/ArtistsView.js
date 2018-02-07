@@ -25,10 +25,6 @@ class ArtistsView extends Component {
   }
 
 
-  checkthis(){
-    console.log('ssss')
-  }
-
 
 
 

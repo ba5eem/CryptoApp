@@ -11,9 +11,10 @@ import ArtistsView from '../Artists/ArtistsView';
 
 
 const Screens = {
+    Featured: { screen: ArtView },
     Artists: {screen: ArtistsView},
     Map: { screen: MapScreen },
-    Art: { screen: ArtView },
+    
     
     Community: { screen: CommunityView }
     ,
@@ -28,7 +29,7 @@ const Navigation = TabNavigator(
       tabBarIcon: ({ focused, tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === 'Art') {
+        if (routeName === 'Featured') {
           iconName = `ios-color-palette${focused ? '' : '-outline'}`;
         } else if (routeName === 'Community') {
           iconName = `ios-contacts${focused ? '' : '-outline'}`;
