@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {loadArtists} from '../../Actions/artists-actions';
+import { loadArtists } from '../../Actions/artists-actions';
 import { View, Text, Image, StyleSheet,ScrollView, TextInput } from 'react-native';
 import { Ionicons } from 'react-native-vector-icons';
 import { Card, ListItem, Button } from 'react-native-elements';
 import {Search} from './Search';
 import { AppHeader } from '../Header/AppHeader';
-import { data } from '../Art/data.js';
 
 
 class ArtistsView extends Component {
@@ -21,14 +20,14 @@ class ArtistsView extends Component {
   }
 
   componentWillMount() {
-    //this.props.loadArtists();
+    this.props.loadArtists();
   }
 
 
 
 
 
-  renderList(){
+  renderList(artists){
     return(
       <View>
         <AppHeader/>
@@ -36,7 +35,7 @@ class ArtistsView extends Component {
 
          <Card containerStyle={{padding: 0}} >
           {
-            data.map((u, i) => {
+            artists.map((u, i) => {
               return (
                 <ListItem
                   onPress={()=>this.setState({view: true, obj: u})}
@@ -96,7 +95,7 @@ class ArtistsView extends Component {
       case false:
         return (
               <View>
-                {this.renderList()}
+                {this.renderList(artists)}
               </View>
             )
       case true:

@@ -2,12 +2,11 @@ import React, {Component} from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
 import { List, ListItem, Avatar, Divider, Icon,Card } from 'react-native-elements';
 import { connect } from 'react-redux';
-import {loadArtists} from '../../Actions/artists-actions';
+import {loadArtists,likedArt} from '../../Actions/artists-actions';
 import { Ionicons } from 'react-native-vector-icons';
 import Tabs from 'react-native-tabs';
 import { StackNavigator } from 'react-navigation';
 import { AppHeader } from '../Header/AppHeader';
-import { data } from './data.js';
 
 
 
@@ -23,14 +22,18 @@ class ArtView extends Component {
     };
   }
 
-  renderFeatured(status, like, hate){
+
+
+
+  renderFeatured(artists){
+    const {like, hate} = this.state;
     return (
       <View>
        <AppHeader/>
        <ScrollView style={{marginBottom: 50}}>
           <List containerStyle={{marginBottom: 20}}>
             {
-              data.map((elem, i) => (
+              artists.map((elem, i) => (
                 <View key={i}>
                   <Image
                     style={{width: '100%', height: 200}}
@@ -44,9 +47,9 @@ class ArtView extends Component {
                       onPress={()=>this.setState({view: true, obj: elem})}
                       rightIcon={
                         <Ionicons
-                          name={status ? like : hate}
+                          name={elem.liked ? like : hate}
                           size={35}
-                          onPress={() => console.log('i like it, or hate it!')}/>
+                          onPress={()=>this.props.likedArt(elem.id)}/>
                       }
                       avatar={<Avatar
                         rounded
@@ -102,12 +105,12 @@ renderSingleArtist(elem){
 
   render() {
     const {artists} = this.props; 
-    const {like,hate,status,view, obj} = this.state;
+    const {view, obj} = this.state;
     switch(view){
       case false:
         return (
               <View>
-                {this.renderFeatured(status,like,hate)}
+                {this.renderFeatured(artists)}
               </View>
             )
       case true:
@@ -165,7 +168,7 @@ const mapStateToProps = (state) => {
 
 const ConnectedArtView = connect(
   mapStateToProps,
-  {loadArtists}
+  {loadArtists,likedArt}
 )(ArtView)
 
 
