@@ -5,10 +5,9 @@ import {
   Dimensions,
   Text,
   Modal,
-  Button,
   Image
 } from 'react-native';
-import { Avatar } from 'react-native-elements';
+import { Avatar, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { AppHeader } from '../Header/AppHeader';
 import {loadArtists} from '../../Actions/artists-actions';
@@ -84,20 +83,22 @@ class MapScreen extends Component {
            <Modal
               visible={this.state.isVisible}
               animationType={'slide'}
+              transparent={true}
               onRequestClose={() => this.setState({isVisible: false, image: ''})}
           >
             <View style={styles.modalContainer}>
               <View>
                 <Image
-                  style={{width: '100%', height: 200}}
+                  style={{width: '100%', height: 400}}
                   activeOpacity={0.7}
                   source={{uri: this.state.image}}/> 
+
+
                 <Button
-                    onPress={() => this.setState({isVisible: false, image: ''})}
-                    title="CLOSE"
-                >
+                  raised
+                  onPress={() => this.setState({isVisible: false, image: ''})}
+                  title='CLOSE' />
                 
-                </Button>
               </View>
             </View>
           </Modal>
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalContainer: {
-    height: 400,
+    height: 500,
     justifyContent: 'center',
   },
   innerContainer: {
