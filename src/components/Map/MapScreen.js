@@ -5,7 +5,8 @@ import {
   Dimensions,
   Text,
   Modal,
-  Button
+  Button,
+  Image
 } from 'react-native';
 import { Avatar } from 'react-native-elements';
 import { connect } from 'react-redux';
@@ -23,10 +24,7 @@ export const kakaako = {
         lat: 21.296594,
         lng: -157.855613,
       };
-export const cord = {
-        longitude: -157.855613,
-        latitude: 21.296594   
-      };
+
 
 export const initRegion = {
         latitude: kakaako.lat,
@@ -42,7 +40,8 @@ class MapScreen extends Component {
   constructor(props){
     super(props);
     this.state = {
-      isVisible: true
+      isVisible: false,
+      image: ''
     }
   }
 
@@ -75,14 +74,33 @@ class MapScreen extends Component {
                       large
                       square
                       source={elem.ftarturl && {uri: elem.ftarturl}}
-                      onPress={() => console.log('show me artist page!')}/>
+                      onPress={() => this.setState({isVisible: true, image: elem.ftarturl})}/>
                   </MapView.Callout>
                 </MapView.Marker>
                 )
             })}
 
           </MapView>
-          
+           <Modal
+              visible={this.state.isVisible}
+              animationType={'slide'}
+              onRequestClose={() => this.setState({isVisible: false, image: ''})}
+          >
+            <View style={styles.modalContainer}>
+              <View>
+                <Image
+                  style={{width: '100%', height: 200}}
+                  activeOpacity={0.7}
+                  source={{uri: this.state.image}}/> 
+                <Button
+                    onPress={() => this.setState({isVisible: false, image: ''})}
+                    title="CLOSE"
+                >
+                
+                </Button>
+              </View>
+            </View>
+          </Modal>
         
         </View>
     );
@@ -95,9 +113,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalContainer: {
-    height: 100,
+    height: 400,
     justifyContent: 'center',
-    backgroundColor: 'grey',
   },
   innerContainer: {
     alignItems: 'center',
