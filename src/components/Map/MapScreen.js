@@ -4,10 +4,15 @@ import {
   View,
   Dimensions,
   Text,
-  ScrollView
+  Modal,
+  Button
 } from 'react-native';
+import { Avatar } from 'react-native-elements';
+import { connect } from 'react-redux';
 import { AppHeader } from '../Header/AppHeader';
+import {loadArtists} from '../../Actions/artists-actions';
 import { MapView } from 'expo';
+import { data } from '../Art/data.js';
 
 const { height } = Dimensions.get('window');
 const box_count = 3;
@@ -34,23 +39,51 @@ const artMarkers = [{title:'art', description: 'awesome', latlng: kakaako}]
 
  
 class MapScreen extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isVisible: true
+    }
+  }
+
+
+
 
 
   render() {
+    const {artists} = this.props;
     return (
-        <View style={container}>
+        <View style={styles.container}>
         <AppHeader/>
+        
           <MapView
+            minZoomLevel={13}
             style={{ flex: 1 }}
             showsUserLocation={true}
             zoomEnabled={true}
             zoomControlEnabled={true}
             initialRegion={initRegion}>
-            <MapView.Marker
-              coordinate={cord}/>
+            {data.map((elem,i) => {
+              return(
+                <MapView.Marker
+                  key={elem.id}
+                  identifier={`${elem.id}`}
+                  onPress={e => console.log('on press maker')}
+                  coordinate={{latitude: elem.lat, longitude: elem.lng}}>
+                  <MapView.Callout>
+                    <Avatar
+                      large
+                      square
+                      source={elem.ftarturl && {uri: elem.ftarturl}}
+                      onPress={() => console.log('show me artist page!')}/>
+                  </MapView.Callout>
+                </MapView.Marker>
+                )
+            })}
 
           </MapView>
-
+          
+        
         </View>
     );
   }
@@ -59,31 +92,28 @@ class MapScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    width: "100%",
+    justifyContent: 'center',
   },
-  box: {
-    height: box_height,
-    borderTopWidth:2,
-    borderTopColor:'#66949C'
+  modalContainer: {
+    height: 100,
+    justifyContent: 'center',
+    backgroundColor: 'grey',
   },
-//header
-  box1: {
-      flex: 1,
-      backgroundColor: '#2196F3'
+  innerContainer: {
+    alignItems: 'center',
   },
-  //content
-  box2: {
-      flex: 10,
-      backgroundColor: '#8BC34A'
-  },
-  //footer
-  box3: {
-      flex: .5,
-      backgroundColor: '#e3aa1a'
-  }
 });
 
-const { container } = styles;
+const mapStateToProps = (state) => {
+  return {
+    artists: state.artists
+  };
+}
 
-export default MapScreen;
+const ConnectedMapScreen = connect(
+  mapStateToProps,
+  {loadArtists}
+)(MapScreen)
+
+
+export default ConnectedMapScreen;

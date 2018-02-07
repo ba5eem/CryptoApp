@@ -9,8 +9,6 @@ import { StackNavigator } from 'react-navigation';
 import { AppHeader } from '../Header/AppHeader';
 import { data } from './data.js';
 
-const heart = {uri: "http://bit.ly/2E7uI2U"};
-const star = {uri: "http://bit.ly/2nFjNrl"};
 
 
 class ArtView extends Component {
@@ -18,10 +16,9 @@ class ArtView extends Component {
     super(props);
     this.state = {
       hate: 'ios-heart-outline',
-      like: 'ios-heart'
+      like: 'ios-heart',
+      status: false
     };
-
-
   }
 
 
@@ -34,7 +31,7 @@ class ArtView extends Component {
 
   render() {
     const {artists} = this.props; 
-    const {like,hate} = this.state;
+    const {like,hate,status} = this.state;
     return (
       <View>
        <AppHeader/>
@@ -56,13 +53,14 @@ class ArtView extends Component {
             fontFamily={'MarkerFelt-Wide'}
             rightIcon={
               <Ionicons
-                name={hate}
+                name={status ? like : hate}
                 size={35}
-                onPress={() => console.log('i like it!')}/>
+                onPress={() => console.log('i like it, or hate it!')}/>
             }
             avatar={<Avatar
               rounded
               source={elem.photo && {uri: elem.photo}}
+              onPress={() => console.log('show me artist page!')}
               title={elem.name}/>}
             />
 

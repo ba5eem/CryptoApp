@@ -6,6 +6,8 @@ bio: "Tara McPherson is an artist based out of New York City. Creating art about
 photo: "http://powwowhawaii.com/wp-content/uploads/2017/01/thumb_tara.jpg",
 website: "http://powwowhawaii.com/participants/tara-mcpherson/",
 ftarturl: "http://powwowhawaii.com/wp-content/uploads/2017/01/profile_tara.jpg",
+lat: 21.2960919,
+lng: -157.859673,
 createdAt: "2017-03-07T00:00:00.000Z",
 updatedAt: "2017-03-07T00:00:00.000Z"
 },
@@ -16,6 +18,8 @@ bio: "Spanish based artist duo, are recognized for their ability to ignite relat
 photo: "http://powwowhawaii.com/wp-content/uploads/2017/01/thumb_pichiavo.jpg",
 website: "http://powwowhawaii.com/participants/pichiavo/",
 ftarturl: "http://powwowhawaii.com/wp-content/uploads/2017/01/profile_pichiavo.jpg",
+lat: 21.30049,
+lng: -157.860531,
 createdAt: "2017-03-07T00:00:00.000Z",
 updatedAt: "2017-03-07T00:00:00.000Z"
 },
@@ -26,6 +30,8 @@ bio: "This self-taught street artist was born in Dominican Republic, where he sp
 photo: "http://powwowhawaii.com/wp-content/uploads/2017/01/thumb_evoca.jpg",
 website: "http://powwowhawaii.com/participants/evoca/",
 ftarturl: "http://powwowhawaii.com/wp-content/uploads/2017/01/profile_evoca.jpg",
+lat: 21.29879,
+lng: -157.858922,
 createdAt: "2017-03-07T00:00:00.000Z",
 updatedAt: "2017-03-07T00:00:00.000Z"
 },
@@ -36,6 +42,8 @@ bio: "Dan Witz is a Brooklyn, NY based street artist and realist painter. He gre
 photo: "http://powwowhawaii.com/wp-content/uploads/2017/01/thumb_danwitz.jpg",
 website: "http://powwowhawaii.com/participants/dan-witz/",
 ftarturl: "http://powwowhawaii.com/wp-content/uploads/2017/01/profile_danwitz.jpg",
+lat: 21.297451,
+lng: -157.8614433,
 createdAt: "2017-03-07T00:00:00.000Z",
 updatedAt: "2017-03-07T00:00:00.000Z"
 },
@@ -46,6 +54,8 @@ bio: "Michelle Tanguay is an artist currently working in Detroit, Michigan.",
 photo: "http://powwowhawaii.com/wp-content/uploads/2017/01/thumb_tanguay.jpg",
 website: "http://powwowhawaii.com/participants/michelle-tanguay/",
 ftarturl: "http://powwowhawaii.com/wp-content/uploads/2017/01/profile_tanguay.jpg",
+lat: 21.296594,
+lng: -157.855613,
 createdAt: "2017-03-07T00:00:00.000Z",
 updatedAt: "2017-03-07T00:00:00.000Z"
 },
@@ -56,6 +66,8 @@ bio: "CAREAUX is the cool, classy moniker of Caroll Lynn – a Netherlands-born 
 photo: "http://powwowhawaii.com/wp-content/uploads/2017/01/thumb_careaux.jpg",
 website: "http://powwowhawaii.com/participants/careaux/",
 ftarturl: "http://powwowhawaii.com/wp-content/uploads/2017/01/profile_careaux.jpg",
+lat: 21.296594,
+lng: -157.875613,
 createdAt: "2017-03-07T00:00:00.000Z",
 updatedAt: "2017-03-07T00:00:00.000Z"
 },
@@ -66,6 +78,8 @@ bio: "SABEK is a Spanish street artist, based in Madrid. He paints alone or with
 photo: "http://powwowhawaii.com/wp-content/uploads/2016/09/862_258846317579806_1182856373_n-260x172.jpg",
 website: "http://powwowhawaii.com/participants/sabek/",
 ftarturl: "http://powwowhawaii.com/wp-content/uploads/2016/09/SABEK.jpg",
+lat: 21.296594,
+lng: -157.865613,
 createdAt: "2017-03-07T00:00:00.000Z",
 updatedAt: "2017-03-07T00:00:00.000Z"
 },
@@ -76,6 +90,8 @@ bio: "Arlin is Brazilian, based in San Francisco. He is 30 years old and was bor
 photo: "http://powwowhawaii.com/wp-content/uploads/2016/09/foto__-260x172.jpg",
 website: "http://powwowhawaii.com/participants/arlin/",
 ftarturl: "http://powwowhawaii.com/wp-content/uploads/2016/09/Arlin-fox.jpg",
+lat: 21.286594,
+lng: -157.855613,
 createdAt: "2017-03-07T00:00:00.000Z",
 updatedAt: "2017-03-07T00:00:00.000Z"
 },
@@ -86,6 +102,8 @@ bio: "Michael Jones is an artist based out of Lancaster, California.",
 photo: "http://powwowhawaii.com/wp-content/uploads/2016/09/MICHAEL-260x172.jpg",
 website: "http://powwowhawaii.com/participants/michael-jones/",
 ftarturl: "http://powwowhawaii.com/wp-content/uploads/2016/09/michaeljones.jpg",
+lat: 21.266594,
+lng: -157.855613,
 createdAt: "2017-03-07T00:00:00.000Z",
 updatedAt: "2017-03-07T00:00:00.000Z"
 },
@@ -96,6 +114,8 @@ bio: "Roshi K is an artist from Austin, Texas that has a colorful illustrative a
 photo: "http://powwowhawaii.com/wp-content/uploads/2016/03/roshi_thumb1.jpg",
 website: "http://powwowhawaii.com/participants/roshi-k/",
 ftarturl: "http://powwowhawaii.com/wp-content/uploads/2016/03/roshi_final_mural.jpg",
+lat: 21.276594,
+lng: -157.855613,
 createdAt: "2017-03-07T00:00:00.000Z",
 updatedAt: "2017-03-07T00:00:00.000Z"
 }

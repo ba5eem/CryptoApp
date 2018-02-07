@@ -12,9 +12,8 @@ import ArtistsView from '../Artists/ArtistsView';
 
 const Screens = {
     
-    
-    Art: { screen: ArtView },
     Map: { screen: MapScreen },
+    Art: { screen: ArtView },
     Artists: {screen: ArtistsView},
     Community: { screen: CommunityView }
     ,
