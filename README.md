@@ -10,3 +10,9 @@ App Made with [Tutorial](https://medium.com/react-native-training/learn-how-to-b
 
 
 Checkout the app on Expo here:[CryptoApp](https://expo.io/@baseem/react-native-redux-crypto-tracker)
+
+# Getting Started:
+```js
+npm install
+npm start
+```
